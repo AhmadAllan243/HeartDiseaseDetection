@@ -2,33 +2,33 @@
 
 # Description and Breakdown
 
-Our project focuses on detecting heart diseases and predicting whether a patient might have a heart disease. We chose a dataset that included 14 factors for us to interpret, they include:
+Our project focuses on detecting heart diseases and predicting whether a patient might have a heart disease. We began by choosing a dataset that included 14 factors for us to interpret, they include:
 
-Age
+- Age
 
-Sex
+- Sex
 
 -- Value 0: female
 
 -- Value 1: male
 
-Cp : chest pain type
+- Cp : chest pain type
 
-Trestbps: resting blood pressure
+- Trestbps: resting blood pressure
 
-Chol: serum cholesterol in mg/dl
+- Chol: serum cholesterol in mg/dl
 
-fbs: fasting blood sugar > 120 mg/dl (1 = true; 0 = false)
+- fbs: fasting blood sugar > 120 mg/dl (1 = true; 0 = false)
 
-Restecg: resting electrocardiographic results
+- Restecg: resting electrocardiographic results
 
-Thalach: maximum heart rate achieved
+- Thalach: maximum heart rate achieved
 
-exang: exercise induced angina (1 = yes; 0 = no)
+- exang: exercise induced angina (1 = yes; 0 = no)
 
-Oldpeak: ST depression induced by exercise relative to rest
+- Oldpeak: ST depression induced by exercise relative to rest
 
-Slope: the slope of the peak exercise ST segment
+- Slope: the slope of the peak exercise ST segment
 
   -- Value 1: upsloping
 
@@ -36,9 +36,9 @@ Slope: the slope of the peak exercise ST segment
 
   -- Value 3: downsloping
 
-ca: number of major vessels (0-3) colored by fluoroscopy 
+- ca: number of major vessels (0-3) colored by fluoroscopy 
 
-Thalassemia: blood disorder caused when the body doesn't make enough hemoglobin
+- Thalassemia: blood disorder caused when the body doesn't make enough hemoglobin
 
    -- Value 3: normal
 
@@ -46,7 +46,7 @@ Thalassemia: blood disorder caused when the body doesn't make enough hemoglobin
  
    -- Value 7: reversible defect
  
-Num: diagnosis of heart disease (predicted value)
+- Num: diagnosis of heart disease (predicted value)
 
   -- Value 0: < 50% diameter narrowing
 
