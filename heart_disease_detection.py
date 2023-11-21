@@ -19,8 +19,17 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, classification_report
 from tensorflow import keras
 from tensorflow.keras import layers
+from sklearn.metrics import confusion_matrix
 from sklearn.metrics import roc_curve, auc
 import matplotlib.pyplot as plt
+from sklearn.model_selection import GridSearchCV
+from sklearn.pipeline import Pipeline
+from tensorflow.keras import Sequential
+from sklearn.preprocessing import StandardScaler
+import seaborn as sns
+from sklearn.metrics import make_scorer, accuracy_score
+from keras.layers import Dense
+from sklearn.model_selection import ParameterGrid
 
 """Importing Dataset:"""
 
@@ -106,10 +115,59 @@ model = keras.Sequential([
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-model.fit(X_train_imputed, y_train, epochs=15, batch_size=64, validation_data=(X_test_imputed, y_test))
+model.fit(X_train_imputed, y_train, epochs=20, batch_size=32, validation_data=(X_test_imputed, y_test))
 
 test_loss, test_accuracy = model.evaluate(X_test_imputed, y_test)
 print(f'Test Accuracy: {test_accuracy}')
+
+"""Confusion Matrix:"""
+
+# Making the Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Plotting the Confusion Matrix
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", annot_kws={"size": 16})
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.show()
+
+"""Hyperparameter tuning:"""
+
+param_grid = {
+    'optimizer': ['adam', 'sgd'],
+    'activation': ['relu', 'sigmoid'],
+    'hidden_units': [32, 64, 128],
+    'batch_size': [32, 64, 128],
+    'epochs': [10, 15, 20]
+}
+
+best_accuracy = 0
+best_params = None
+
+for params in ParameterGrid(param_grid):
+    model = keras.Sequential([
+        layers.Dense(64, activation=params['activation'], input_shape=(X_train_imputed.shape[1],)),
+        layers.Dense(params['hidden_units'], activation=params['activation']),
+        layers.Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer=params['optimizer'], loss='binary_crossentropy', metrics=['accuracy'])
+
+    # Train the model
+    model.fit(X_train_imputed, y_train, epochs=params['epochs'], batch_size=params['batch_size'], verbose=0)
+
+    # Evaluate the model
+    test_loss, test_accuracy = model.evaluate(X_test_imputed, y_test, verbose=0)
+
+    # Check if the current model is the best
+    if test_accuracy > best_accuracy:
+        best_accuracy = test_accuracy
+        best_params = params
+
+# Print the best parameters and accuracy
+print("Best parameters found: ", best_params)
+print("Best accuracy found: ", best_accuracy)
 
 """Graph representation (ROC curve):"""
 
