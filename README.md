@@ -68,3 +68,6 @@ For the second algorithm we created a neural network. We chose this approach as 
 
 Finally, we created representational graphs (ROCs) for both algorithms in order to make the analysis process simpler and more understandable. We also created a comparative bar graph in order to demonstrate the difference in accuracy between the two algorithms.
 
+# Project Report
+
+[Heart Disease Prediction.pdf](https://github.com/AhmadAllan243/HeartDiseaseDetection/files/13428831/Heart.Disease.Prediction.pdf)
