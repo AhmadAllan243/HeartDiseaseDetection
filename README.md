@@ -1,6 +1,6 @@
 # HeartDiseaseDetection
 
-# Description and Breakdown
+## Description and Breakdown
 
 Our project focuses on detecting heart diseases and predicting whether a patient might have a heart disease. We began by choosing a dataset that included 14 factors for us to interpret, they include:
 
@@ -55,7 +55,7 @@ Our project focuses on detecting heart diseases and predicting whether a patient
 
 The ‘num’ variable is the final output which detects whether a patient might have a heart disease or not. We faced a small problem with missing values in parts of the dataset but then decided to replace all missing values with NULL, then after having to fill up the NULL values to apply the algorithms, we calculated the mean of the the values that were already there and replaced the NULL values with the values we calculated. 
 
-# Methedology
+## Methedology
 
 For our dataset, we first had to process the data in order to get rid of non-numerical values in any rows, as well as ensure that any missing values are represented correctly. To do so, we imported all necessary libraries as well as the dataset file as a csv. Then, we created columns where each respective value for each patient would fall under (age, sex, cp…). We also had missing values that were represented with question marks. In order to make it correctly insertable into the algorithms, we replaced all question marks with NA.
 
@@ -68,6 +68,6 @@ For the second algorithm we created a neural network. We chose this approach as 
 
 Finally, we created representational graphs (ROCs) for both algorithms in order to make the analysis process simpler and more understandable. We also created a comparative bar graph in order to demonstrate the difference in accuracy between the two algorithms.
 
-# Project Report
+## Project Report
 
 [Heart Disease Prediction.pdf](https://github.com/AhmadAllan243/HeartDiseaseDetection/files/13428831/Heart.Disease.Prediction.pdf)
